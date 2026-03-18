@@ -1,6 +1,6 @@
 # Ray Tracing Practice
 
-Simple C++ ray tracing practice project to help me practice. Following the Ray Tracing in One Weekend book.
+Simple C++ ray tracing practice project to help me practice. Following the [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) book.
 
 ## Project Structure
 
@@ -30,4 +30,4 @@ g++ -std=c++17 src/main.cpp -Iinclude -o ray_tracing
 ## Notes
 
 - On Linux, the executable is `ray_tracing` (not `.exe`).
-- Render output is written to `image.ppm`.
+- Render output is written to `image.ppm`. You can view what the image output is using tools like this [one](https://www.cs.rhodes.edu/welshc/COMP141_F16/ppmReader.html).
