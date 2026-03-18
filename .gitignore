@@ -1,0 +1,26 @@
+# Build directories
+/build/
+/cmake-build-*/
+
+# CMake generated files (in-source builds)
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/Makefile
+
+# Build metadata
+compile_commands.json
+
+# Compiled objects and binaries
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.dylib
+*.exe
+*.out
+
+# Render outputs
+*.ppm
