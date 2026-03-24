@@ -24,3 +24,7 @@ compile_commands.json
 
 # Render outputs
 *.ppm
+
+# Rust build artifacts
+/gpu-version/target/
+**/*.rs.bk
