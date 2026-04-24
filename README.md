@@ -13,7 +13,7 @@ Simple C++ ray tracing practice project to help me practice. Following the Ray T
 From the project root:
 
 ```bash
-cmake -S . -B build
+cmake -S . -B build // only do this first time building project
 cmake --build build
 ./build/ray_tracing > image.ppm
 ```
