@@ -3,8 +3,6 @@
 
 #include "vec3.h"
 
-#include <iostream>
-
 // define color as an alias for vec3, 
 // aka a 3D vector to represent RGB color values
 using color = vec3;
