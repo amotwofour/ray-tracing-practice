@@ -13,7 +13,7 @@ cmake --build build
 
 ## Build And Run (Direct g++)
 
-From the project root:
+From the cpu-version directory:
 
 ```bash
 g++ -std=c++17 src/main.cpp -Iinclude -o ray_tracing
