@@ -6,14 +6,14 @@ Simple C++ ray tracing practice project to help me practice. Following the Ray T
 
 ```bash
 cd cpu-version
-cmake -S . -B build
+cmake -S . -B build # build like this if building for first time
 cmake --build build
 ./build/ray_tracing > image.ppm
 ```
 
 ## Build And Run (Direct g++)
 
-From the project root:
+From the cpu-version directory:
 
 ```bash
 g++ -std=c++17 src/main.cpp -Iinclude -o ray_tracing
@@ -24,26 +24,13 @@ g++ -std=c++17 src/main.cpp -Iinclude -o ray_tracing
 
 ```bash
 cd cuda-version
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build -j
-```
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release # build like this if building for first time
+cmake --build build -j 
+./build/cuda_ray_tracer # run
 
-## Run
-
-```bash
-./build/cuda_ray_tracer
-```
-
-Optional args:
-
-```bash
+# OR with optional arguments:
 ./build/cuda_ray_tracer [width] [samples_per_pixel] [max_depth] [output_file]
-```
-
-Example:
-
-```bash
-./build/cuda_ray_tracer 1200 256 32 image_cuda.ppm
+./build/cuda_ray_tracer 1200 256 32 image_cuda.ppm # example usage
 ```
 
 ## Notes
