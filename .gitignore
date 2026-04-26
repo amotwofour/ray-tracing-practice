@@ -37,3 +37,6 @@ ENV/
 */venv/
 */env/
 */ENV/
+
+# Python bytecode and cache
+__pycache__/
