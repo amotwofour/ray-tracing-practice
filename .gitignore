@@ -27,4 +27,13 @@ compile_commands.json
 
 # Rust build artifacts
 /gpu-version/target/
-**/*.rs.bk
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+*/.venv/
+*/venv/
+*/env/
+*/ENV/
