@@ -14,7 +14,12 @@ const HEIGHT: u32 = 600;
 
 async fn connect_to_gpu<'a>(
     window: &'a Window,
-) -> Result<(wgpu::Device, wgpu::Queue, wgpu::Surface<'a>)> {
+) -> Result<(
+    wgpu::Device,
+    wgpu::Queue,
+    wgpu::Surface<'a>,
+    wgpu::TextureFormat,
+)> {
     use wgpu::TextureFormat::{Bgra8Unorm, Rgba8Unorm};
 
     // create wgpu instance to access api
@@ -60,7 +65,7 @@ async fn connect_to_gpu<'a>(
     };
     surface.configure(&device, &config);
 
-    Ok((device, queue, surface))
+    Ok((device, queue, surface, format))
 }
 
 #[pollster::main]
@@ -72,10 +77,10 @@ async fn main() -> Result<()> {
         .with_resizable(false)
         .with_title("GPU Path Tracer".to_string())
         .build(&event_loop)?;
-    let (device, queue, surface) = connect_to_gpu(&window).await?;
+    let (device, queue, surface, surface_format) = connect_to_gpu(&window).await?;
 
     // TODO: initialize renderer
-    let renderer = render::PathTracer::new(device, queue);
+    let renderer = render::PathTracer::new(device, queue, surface_format);
 
     event_loop.run(|event, control_handle| {
         control_handle.set_control_flow(ControlFlow::Poll);
