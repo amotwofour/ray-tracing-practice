@@ -6,14 +6,18 @@ pub struct PathTracer {
 }
 
 impl PathTracer {
-    pub fn new(device: wgpu::Device, queue: wgpu::Queue) -> PathTracer {
+    pub fn new(
+        device: wgpu::Device,
+        queue: wgpu::Queue,
+        surface_format: wgpu::TextureFormat,
+    ) -> PathTracer {
         device.on_uncaptured_error(Box::new(|error| {
             panic!("Aborting due to an error: {}", error);
         }));
 
         // TODO: initialize GPU resources
         let shader_mod = compile_shader_module(&device);
-        let pipeline = create_pipeline(&device, &shader_mod);
+        let pipeline = create_pipeline(&device, &shader_mod, surface_format);
         
 
         PathTracer {
@@ -66,6 +70,7 @@ fn compile_shader_module(device: &wgpu::Device) -> wgpu::ShaderModule {
 fn create_pipeline(
     device: &wgpu::Device,
     shader_mod: &wgpu::ShaderModule,
+    surface_format: wgpu::TextureFormat,
 ) -> wgpu::RenderPipeline {
     device.create_render_pipeline(&wgpu::RenderPipelineDescriptor {
         label: Some("path tracer pipeline"),
@@ -86,7 +91,7 @@ fn create_pipeline(
             module: shader_mod,
             entry_point: Some("path_tracer_fs"),
             targets: &[Some(wgpu::ColorTargetState {
-                format: wgpu::TextureFormat::Bgra8Unorm, // TODO: get from surface config
+                format: surface_format,
                 blend: None,
                 write_mask: wgpu::ColorWrites::ALL,
             })],
