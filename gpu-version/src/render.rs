@@ -49,7 +49,7 @@ impl PathTracer {
         });
 
         render_pass.set_pipeline(&self.pipeline);
-        render_pass.draw(0..3, 0..1);
+        render_pass.draw(0..6, 0..1);
         drop(render_pass);
 
         let command_buffer = encoder.finish();
