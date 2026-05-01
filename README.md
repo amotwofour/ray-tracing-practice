@@ -20,20 +20,15 @@ g++ -std=c++17 src/main.cpp -Iinclude -o ray_tracing
 ./ray_tracing > image.ppm
 ```
 
-## Build and Run CUDA C++ Version(also CMake):
+## Build and Run GPU Version(cargo):
 
 ```bash
-cd cuda-version
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release # build like this if building for first time
-cmake --build build -j 
-./build/cuda_ray_tracer # run
-
-# OR with optional arguments:
-./build/cuda_ray_tracer [width] [samples_per_pixel] [max_depth] [output_file]
-./build/cuda_ray_tracer 1200 256 32 image_cuda.ppm # example usage
+cd gpu-version
+cargo build
+cargo run
 ```
 
 ## Notes
 
 - On Linux, the executable is `ray_tracing` (not `.exe`).
-- Render output is written to `image.ppm`.
+- Render output for cpu version is written to `image.ppm`. You can try using the python renderer in this repo or just upload the ppm to a ppm viewer online.
