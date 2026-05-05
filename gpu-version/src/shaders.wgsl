@@ -2,7 +2,7 @@ struct Uniforms {
     width: u32,
     height: u32,
 }
-@group(0) @binding(0) var<unifmorm> unifirms: Uniforms;
+@group(0) @binding(0) var<uniform> uniforms: Uniforms;
 
 struct Ray {
     origin: vec3f,
