@@ -16,6 +16,7 @@ pub struct PathTracer {
 struct Uniforms {
     width: u32,
     height: u32,
+    frame_count: u32,
 }
 
 impl PathTracer {
@@ -37,6 +38,7 @@ impl PathTracer {
         let uniforms  = Uniforms {
             width,
             height,
+            frame_count: 0,
         };
         let uniform_buffer = device.create_buffer(&wgpu::BufferDescriptor {
             label: Some("uniforms"),
@@ -73,7 +75,9 @@ impl PathTracer {
         }
     }
 
-    pub fn render_frame(&self, target: &wgpu::TextureView) {
+    pub fn render_frame(&mut self, target: &wgpu::TextureView) {
+        self.uniforms.frame_count += 1;
+
         let mut encoder = self
             .device
             .create_command_encoder(&wgpu::CommandEncoderDescriptor {

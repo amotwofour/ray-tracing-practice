@@ -80,7 +80,7 @@ async fn main() -> Result<()> {
     let (device, queue, surface, surface_format) = connect_to_gpu(&window).await?;
 
     // TODO: initialize renderer
-    let renderer = render::PathTracer::new(device, queue, surface_format, WIDTH, HEIGHT);
+    let mut renderer = render::PathTracer::new(device, queue);
 
     event_loop.run(|event, control_handle| {
         control_handle.set_control_flow(ControlFlow::Poll);
